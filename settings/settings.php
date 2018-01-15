@@ -43,10 +43,10 @@ if ( !class_exists('Granular_Controls_Settings_API' ) ) {
 					'id'    => 'granular_editor_settings',
 					'title' => __( 'Editor Options', 'elementor-controls' )
 				),
-				//array(
-				//	'id'    => 'granular_advanced_settings',
-				//	'title' => __( 'Advanced Settings', 'elementor-controls' )
-				//)
+				array(
+					'id'    => 'granular_advanced_settings',
+					'title' => __( 'Advanced Settings', 'elementor-controls' )
+				)
 			);
 			return $sections;
 		}
@@ -57,6 +57,14 @@ if ( !class_exists('Granular_Controls_Settings_API' ) ) {
 		 * @return array settings fields
 		 */
 		function get_settings_fields() {
+
+			$templates = $this->get_templates();
+			$options = [
+				'' => '— ' . __( 'Select', 'elementor-controls' ) . ' —',
+			];
+			foreach ( $templates as $template ) {
+				$options[ $template['template_id'] ] = $template['title'] . ' (' . $template['type'] . ')';
+			}
 			$settings_fields = array(
 				'granular_general_settings' => array(
 					array(
@@ -111,6 +119,38 @@ if ( !class_exists('Granular_Controls_Settings_API' ) ) {
 							'no'  => 'No'
 						)
 					)
+				),
+				'granular_advanced_settings' => array(
+					array(
+						'name'    => 'granular_elementor_dashboard_on',
+						'label'   => __( 'Elementor In Dashboard', 'elementor-controls' ),
+						'desc'    => __( 'Enable use of Elementor content in the Admin Dashboard - below options will not function correctly with this setting turned off!.', 'elementor-controls' ),
+						'type'    => 'radio',
+						'default' => 'no',
+						'options' => array(
+							'yes' => 'Yes',
+							'no'  => 'No'
+						)
+					),
+					array(
+						'name'    => 'granular_welcome_on',
+						'label'   => __( 'Welcome Panel', 'elementor-controls' ),
+						'desc'    => __( 'Enable the custom Granular Welcome Panel in the Admin Dashboard.', 'elementor-controls' ),
+						'type'    => 'radio',
+						'default' => 'no',
+						'options' => array(
+							'yes' => 'Yes',
+							'no'  => 'No'
+						)
+					),
+					array(
+						'name'    => 'granular_welcome_template_id',
+						'label'   => __( 'Panel Template ID', 'elementor-controls' ),
+						'desc'    => __( 'Select the template you\'d like to be used as the Welcome Panel in the Admin Dashboard.', 'elementor-controls' ),
+						'type'    => 'select',
+						'default' => '',
+						'options' => $options,
+					),
 				)
 			);
 
@@ -119,10 +159,8 @@ if ( !class_exists('Granular_Controls_Settings_API' ) ) {
 
 		function granular_settings_page() {
 			echo '<div class="wrap">';
-
-			$this->settings_api->show_navigation();
-			$this->settings_api->show_forms();
-
+				$this->settings_api->show_navigation();
+				$this->settings_api->show_forms();
 			echo '</div>';
 		}
 
@@ -141,6 +179,10 @@ if ( !class_exists('Granular_Controls_Settings_API' ) ) {
 			}
 
 			return $pages_options;
+		}
+		
+		public static function get_templates() {
+			return Plugin::elementor()->templates_manager->get_source( 'local' )->get_items();
 		}
 
 	}

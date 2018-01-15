@@ -15,6 +15,8 @@ final class Manager {
 		$modules = [
 			'delayed-content',
 			'scheduled-content',
+			'granular-parallax',
+			'granular-particles',
 		];
 
 		foreach ( $modules as $module_name ) {

@@ -3,7 +3,7 @@
  * Plugin Name: Granular Controls For Elementor
  * Description: Take control of your favourite page builder's elements to design better websites and landing pages and overall better UI/UX.
  * Plugin URI: https://github.com/norewp/granular-controls-elementor
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Zulfikar Nore
  * Author URI: https://granularcontrols.com/
  * Text Domain: elementor-controls
@@ -11,7 +11,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define( 'ELEMENTOR_CONTROLS_VERSION', '1.0.0' );
+define( 'ELEMENTOR_CONTROLS_VERSION', '1.0.1' );
 define( 'ELEMENTOR_CONTROLS_PREVIOUS_STABLE_VERSION', '1.0.0' );
 
 define( 'ELEMENTOR_CONTROLS__FILE__', __FILE__ );
@@ -145,4 +145,30 @@ function granular_get_options( $option, $section, $default = '' ) {
     }
 
     return $default;
+}
+
+function elementor_dashboard_enqueue() {
+    /* Get current page context */
+	global $pagenow;
+	
+	if( 'index.php' != $pagenow ){
+		return;
+	}
+	
+	wp_enqueue_style( 'granular-dashboard-content', ELEMENTOR_CONTROLS_ASSETS_URL . 'css/granular-dashboard.min.css', false, '1.1', 'all' );
+	
+	global $wp_styles, $is_IE;
+	wp_enqueue_style( 'granular-font-awesome', ELEMENTOR_CONTROLS_ASSETS_URL . 'font-awesome/css/font-awesome.min.css', array(), '4.7.0' );
+	if ( $is_IE ) {
+		wp_enqueue_style( 'granular-font-awesome-ie', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome-ie7.min.css', array('granular-font-awesome'), '4.7.0' );
+		// Add IE conditional tags for IE 7 and older
+		$wp_styles->add_data( 'granular-font-awesome-ie', 'conditional', 'lte IE 7' );
+	}
+	
+	wp_enqueue_script( 'granular-dashboard-content-js', ELEMENTOR_CONTROLS_ASSETS_URL . 'js/granular-dashboard.min.js', array( 'jquery' ), time(), true );
+}
+$elementor_dash_on = granular_get_options( 'granular_elementor_dashboard_on', 'granular_advanced_settings', 'no' );
+if ( 'yes' === $elementor_dash_on ) {
+	remove_action( 'welcome_panel', 'wp_welcome_panel' );
+	add_action( 'admin_enqueue_scripts', 'elementor_dashboard_enqueue' );
 }

@@ -23,6 +23,26 @@ class Plugin_Functions {
 	<?php
 	}
 	
+	public function granular_welcome_panel() {
+		$screen = get_current_screen();
+		if( $screen->base == 'dashboard' ) { 
+		$panel_id = granular_get_options( 'granular_welcome_template_id', 'granular_advanced_settings', '' ); ?>
+		<div class="granular-dashboard">
+			<?php do_action( 'granular_before_dashboard_title' ); ?>
+			<h2><?php _e( 'Dashboard', 'elementor-controls' ); ?></h2>
+			<div id="welcome-panel" class="welcome-panel">
+				<?php wp_nonce_field( 'welcome-panel-nonce', 'granularwelcomepanelnonce', false ); ?>
+				<?php do_action( 'granular_before_welcome_content' ); ?>
+				<div class="welcome-panel-content">
+					<?php echo Plugin::elementor()->frontend->get_builder_content_for_display( $panel_id );?>
+				</div>
+				<?php do_action( 'granular_after_welcome_content' ); ?>
+			</div>		
+		<?php do_action( 'granular_welcome_panel_footer' ); ?>
+		</div>
+		<?php }
+	}
+		
 	public function disable_elementor_dashboard_overview_widget() {
 		remove_meta_box( 'e-dashboard-overview', 'dashboard', 'normal' );
 	}
@@ -44,6 +64,12 @@ class Plugin_Functions {
 			ELEMENTOR_CONTROLS_VERSION
 		);
 
+	}
+	
+	public function enqueue_welcome_panel_styles() {
+		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		$panel_id = granular_get_options( 'granular_welcome_template_id', 'granular_advanced_settings', '' );		
+		wp_enqueue_style( 'granular-dashboard-page', esc_url( site_url().'/wp-content/uploads/elementor/css/post-' . $panel_id . '.css', false, '1.1', 'all' ) );
 	}
 	
 	private function functions_setup_hooks() {
@@ -68,9 +94,18 @@ class Plugin_Functions {
 			add_action( 'elementor/editor/after_enqueue_styles', [ $this, 'db_ui_hack_2' ] );
 		}
 		
+		/* 
+		 * Advanced Options
+		 */
+		$custom_panel = granular_get_options( 'granular_welcome_on', 'granular_advanced_settings', 'no' );
+		if ( 'yes' === $custom_panel ) {
+			add_action( 'admin_notices', [ $this, 'granular_welcome_panel' ] );
+			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_welcome_panel_styles' ] );
+		}
 	}
 	
 	public function __construct() {
 		$this->functions_setup_hooks();
+		
 	}
 }

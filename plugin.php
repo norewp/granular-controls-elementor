@@ -150,6 +150,8 @@ class Plugin {
 
 	private function setup_hooks() {
 		add_action( 'elementor/init', [ $this, 'elementor_controls_init' ] );
+		
+		//add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ] );
 	}
 
 	/**
