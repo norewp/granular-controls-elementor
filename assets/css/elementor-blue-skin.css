@@ -115,7 +115,7 @@ input#elementor-panel-elements-search-input:focus {
 	border: 1px solid #565656;
 }
 .elementor-panel .elementor-choices input:not(:checked) + .elementor-choices-label {
-	background-color: #32373e;
+	background-color: #0175af;
 	
 }
 .elementor-panel .elementor-choices input:checked + .elementor-choices-label {
@@ -129,6 +129,9 @@ input#elementor-panel-elements-search-input:focus {
 }
 
 /* COLOR SELECTOR */
+.elementor-panel .wp-picker-clear.button, .elementor-panel .wp-picker-default.button {
+	background-color: #08567c;
+}
 .elementor-panel .wp-picker-container.wp-picker-active {
 	background-color: #2e3235;
 	border: solid #fff0;
@@ -137,7 +140,8 @@ input#elementor-panel-elements-search-input:focus {
 	background-color: #fff0;
 }
 
-#elementor-mode-switcher {
+#elementor-mode-switcher,
+body.elementor-editor-preview #elementor-mode-switcher {
 	background-color: #08567c;
 }
 
@@ -243,3 +247,33 @@ input[disabled] {
 	color: #ccc;
 }
 */
+
+/* Granular Controls additions */
+.elementor-panel .panel-elements-category-title {	
+	background-color: rgba(8,86,124,0.07);
+	color: #cccccc;
+}
+
+#granular-top-bar {
+	background-color: #08567c;
+	color: #f4f4f4;
+}
+
+#granular-top-bar .exit-to-dashboard {
+	background-color: #0175af;
+	color: #f4f4f4;
+}
+
+#granular-top-bar .view-live-page {
+	background-color: #0175af;
+	color: #f4f4f4;
+}
+
+.eicon-edd-single:before,
+.eicon-designer-edd:before,
+.eicon-designer-scroll:before,
+.eicon-designer-frameit:before,
+.eicon-designer-preview:before,
+.eicon-designer-designfolio:before {
+	color: #ffffff;
+}

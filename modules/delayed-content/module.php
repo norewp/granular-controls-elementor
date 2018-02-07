@@ -30,7 +30,7 @@ class Module extends Module_Base {
 	 */
 	public function register_controls( $element, $section_id, $args ) {
 		static $sections = [
-			'layout', /* Column */
+			//'layout', /* Column */
 			'section_layout', /* Section */
 		];
 
@@ -41,7 +41,7 @@ class Module extends Module_Base {
 		$element->start_controls_section(
 			'section_column_controls',
 			[
-				'label' => __( 'Delayed Content', 'elementor-controls' ),
+				'label' => __( 'Delayed Content', 'granular-controls-for-elementor' ),
 				'tab' => Controls_Manager::TAB_LAYOUT,
 			]
 		);
@@ -49,7 +49,7 @@ class Module extends Module_Base {
 		$element->add_control(
 			'column_controls_description',
 			[
-				'raw' => __( 'These controls only affect the Column/Section they are attached to!', 'elementor-controls' ),
+				'raw' => __( 'These controls only affect the Column/Section they are attached to!', 'granular-controls-for-elementor' ),
 				'type' => Controls_Manager::RAW_HTML,
 				'content_classes' => 'elementor-descriptor',
 			]
@@ -58,13 +58,13 @@ class Module extends Module_Base {
 		$element->add_control(
 			'section_delay_on',
 			[
-				'label' => __( 'Delay Content?', 'elementor-controls' ),
+				'label' => __( 'Delay Content?', 'granular-controls-for-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => '',
 				'label_on' => 'Yes',
 				'label_off' => 'No',
 				'return_value' => 'yes',
-				'description' => __( 'Switch on to delay the contents of this column|section!.', 'elementor-controls' ),
+				'description' => __( 'Switch on to delay the contents of this column|section!.', 'granular-controls-for-elementor' ),
 			]
 		);
 		
@@ -77,7 +77,7 @@ class Module extends Module_Base {
 				'condition' => [
 					'section_delay_on' => 'yes',
 				],
-				'description' => __( 'Set delay time in in minutes i.e 1 for 1 minute or 0.20 (60*0.2) for 12 seconds - default is 0.50 (30 seconds)!', '' ),
+				'description' => __( 'Set delay time in in minutes i.e 1 for 1 minute or 0.20 (60*0.2) for 12 seconds - default is 0.50 (30 seconds)!', 'granular-controls-for-elementor' ),
 			]
 		);
 
@@ -96,18 +96,19 @@ class Module extends Module_Base {
 	
 	public function after_render($element) {
 		$settings = $element->get_settings();
+		if( $element->get_settings( 'section_delay_on' ) == 'yes' ) { 		
 		$time = $settings['content_delay_time'];
-		if( $element->get_settings( 'section_delay_on' ) == 'yes' ) { ?>
+		?>
 			<input type="hidden" id="timedelay-<?php echo $element->get_id(); ?>" value="<?php echo $time; ?>" />
 			<script type="text/javascript">
-			(function($) {
-				delay = ( document.getElementById("timedelay-<?php echo $element->get_id(); ?>").value * 60 ) * 1000;
-				setTimeout(function(){showdiv()}, delay);
-				
-				function showdiv() {
-					document.getElementById("delayed-content-<?php echo $element->get_id(); ?>").style.display = "block";
+				window.onload = function() {
+					delay = ( document.getElementById("timedelay-<?php echo $element->get_id(); ?>").value * 60 ) * 1000;
+					setTimeout(function(){showdiv()}, delay);
+					
+					function showdiv() {
+						document.getElementById("delayed-content-<?php echo $element->get_id(); ?>").style.display = "block";
+					}
 				}
-			})(jQuery);
 			</script>		
 		<?php	
 		}

@@ -13,6 +13,9 @@ final class Manager {
 
 	public function __construct() {
 		$modules = [
+			'granular-bar',
+			//'granular-columns',
+			//'granular-sections',
 			'delayed-content',
 			'scheduled-content',
 			'granular-parallax',

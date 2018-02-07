@@ -1,0 +1,66 @@
+#granular-top-bar {
+	background-color: #b7084e;
+	max-width: 600px;
+	width: auto;
+	height: 40px;
+	color: #ffffff;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 100vh;
+	left: 17.84vw;
+	padding: 0;
+	padding-right: 4px;
+	z-index: 0;
+	display: table;	
+	text-align: center;
+}
+
+body.elementor-editor-preview #granular-top-bar {
+	display: none;
+}
+
+#granular-top-bar .left-btn,
+#granular-top-bar .right-btn,
+#granular-top-bar .view-live-page,
+#granular-top-bar .exit-to-dashboard {
+	display: inline-block;
+	padding: 10px 12px;
+	border-radius: 3px;
+	text-transform: uppercase;
+	text-align: left;
+	font-weight: 400;
+	transition: background .3s ease, color .3s ease;
+}
+#granular-top-bar .left-btn,
+#granular-top-bar .right-btn {
+	font-size: 16px;
+}
+
+#granular-top-bar .left-btn i {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+
+#granular-top-bar .exit-to-dashboard {
+	background-color: #aa0346;
+	color: #ffffff;
+}
+#granular-top-bar .exit-to-dashboard i {
+    margin-right: 8px;
+}
+
+#granular-top-bar .view-live-page {
+	background-color: #aa0346;
+	color: #ffffff;
+}
+
+#granular-top-bar .view-live-page i {
+    margin-left: 8px;
+}
+.elementor-panel .panel-elements-category-title {	
+	margin: 5px 10px;
+	padding: 15px 15px !important;
+	background-color: #ffffff;
+    color: #6d7882;
+    border-radius: 3px;
+}

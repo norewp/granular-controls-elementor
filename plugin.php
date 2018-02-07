@@ -41,7 +41,7 @@ class Plugin {
 	 */
 	public function __clone() {
 		// Cloning instances of the class is forbidden
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'elementor-controls' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'granular-controls-for-elementor' ), '1.0.0' );
 	}
 
 	/**
@@ -52,7 +52,7 @@ class Plugin {
 	 */
 	public function __wakeup() {
 		// Unserializing instances of the class is forbidden
-		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'elementor-controls' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'granular-controls-for-elementor' ), '1.0.0' );
 	}
 
 	/**
@@ -105,20 +105,15 @@ class Plugin {
 
 	public function enqueue_styles() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-
-		$direction_suffix = is_rtl() ? '-rtl' : '';
-
-		
+		$direction_suffix = is_rtl() ? '-rtl' : '';		
 	}
 
 	public function enqueue_frontend_scripts() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-
 	}
 
 	public function enqueue_editor_scripts() {
-		$suffix = Utils::is_script_debug() ? '' : '.min';
-	
+		$suffix = Utils::is_script_debug() ? '' : '.min';	
 	}
 
 	public function register_frontend_scripts() {
@@ -139,7 +134,7 @@ class Plugin {
 		$elementor->elements_manager->add_category(
 			'elementor-controls-elements',
 			[
-				'title' => __( 'Elementor Controls Elements', 'elementor-controls' ),
+				'title' => __( 'Elementor Controls Elements', 'granular-controls-for-elementor' ),
 				'icon' => 'font',
 			],
 			1
@@ -147,13 +142,11 @@ class Plugin {
 
 		do_action( 'elementor_controls/init' );
 	}
-
+	
 	private function setup_hooks() {
 		add_action( 'elementor/init', [ $this, 'elementor_controls_init' ] );
-		
-		//add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'enqueue_editor_scripts' ] );
 	}
-
+	
 	/**
 	 * Plugin constructor.
 	 */
@@ -164,11 +157,12 @@ class Plugin {
 
 		$this->setup_hooks();
 		
-		if ( is_admin() ) {
+		if ( is_admin() && current_user_can( 'activate_plugins' ) ) {
 			new Granular_Controls_Settings_API();
 		}
 		
-		new Plugin_Functions();
+		new Plugin_Functions();			
+		
 	}
 }
 

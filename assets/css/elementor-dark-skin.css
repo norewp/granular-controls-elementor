@@ -2,8 +2,7 @@
 	.elementor-panel#elementor-panel,
 	.elementor-panel .elementor-control { 
 		background: #23282d;
-		color: #c6c6c6;
-		
+		color: #c6c6c6;		
 	}
 	
 	/* MAIN ELEMENT */
@@ -136,6 +135,9 @@
 	}
 	
 	/* COLOR SELECTOR */
+	.elementor-panel .wp-picker-clear.button, .elementor-panel .wp-picker-default.button {
+		background-color: #4a4f54;
+	}
 	.elementor-panel .wp-picker-container.wp-picker-active {
 		background-color: #23282d;
 		border: solid #fff0;
@@ -144,8 +146,12 @@
 		background-color: #fff0;
 	}
 	
-	#elementor-mode-switcher {
+	#elementor-mode-switcher,
+	body.elementor-editor-preview #elementor-mode-switcher {
 		background-color: #23282d;
+	}
+	#elementor-mode-switcher:hover {
+		background-color: #4a4f54;
 	}
 	
 	.elementor-panel #elementor-panel-header {
@@ -162,7 +168,7 @@
 	.elementor-panel input,
 	.elementor-panel select,
 	.elementor-panel textarea {
-		color: #ccc;
+		color: #f4f4f4;
 	}
 	
 	.elementor-panel select {
@@ -179,7 +185,7 @@
 		border-bottom: 1px solid #3b3b3b;
 	}
 
-	.elementor-panel .elementor-control.elementor-control-separator-default::before {
+	.elementor-panel .elementor-control.elementor-control-separator-default:before {
 		background-color: #3b3b3b;
 	}
 
@@ -207,7 +213,7 @@
 	.elementor-panel select:focus,
 	.elementor-panel textarea:focus,
 	.elementor-panel input:focus {
-		 border-color: #666;
+		 border-color: #666666;
 	}
 	
 	.elementor-panel .elementor-panel-scheme-color-system-items,
@@ -230,31 +236,72 @@
 	}
 	.elementor-panel .elementor-panel-footer-sub-menu-wrapper {
 		z-index: 4;
-	}
-	
-	
+	}	
 	.elementor-panel .elementor-control-type-popover_toggle .elementor-control-popover-toggle-toggle:checked + .elementor-control-popover-toggle-toggle-label {
 		color: #ccc;
-	}
-	
+	}	
 	.elementor-panel .elementor-control-type-popover_toggle .elementor-control-popover-toggle-toggle-label {
 		border: 1px solid #565656;
-	}
-	
+	}	
 	.elementor-panel .elementor-controls-popover:before {
 		border-bottom-color: #23282d;
-	}
-	
+	}	
 	.elementor-panel .elementor-controls-popover {
 		background-color: #23282d;
-	}
-	
+	}	
 	.elementor-panel .elementor-controls-popover {
 		-webkit-box-shadow: 0 0 25px rgba(0, 0, 0, 0.45);
 		box-shadow: 0 0 25px rgba(0, 0, 0, 0.45);
-	}
-	
+	}	
 	.elementor-button.elementor-button-success:not([disabled]), .elementor-panel .elementor-button#elementor-panel-saver-publish:not([disabled]) {
 		background-color: #f4f4f4;
 		color: #556068;
+	}
+	.select2-container--default .select2-selection--multiple {
+		background-color: #23282d;
+		border: 1px solid #565656;
+	}
+
+	.select2-container--default .select2-selection--multiple .select2-selection__choice {
+		background-color: #3a3a3a;
+		border: 1px solid #565656;
+	}
+	.elementor-panel .select2-container.select2-container--focus .select2-selection--multiple, 
+	.elementor-panel .select2-container.select2-container--focus .select2-selection--single, 
+	.elementor-panel .select2-container.select2-container--open .select2-selection--multiple, 
+	.elementor-panel .select2-container.select2-container--open .select2-selection--single {
+		border-color: #565656;
+	}
+	.elementor-panel .select2-container:not(.select2-container--open):not(.select2-container--focus) .select2-selection--multiple, 
+	.elementor-panel .select2-container:not(.select2-container--open):not(.select2-container--focus) .select2-selection--single {
+		border-color: #565656;
+	}
+	/* Granular Controls additions */
+	.elementor-panel .panel-elements-category-title {	
+		background-color: rgba(255,255,255,0.07);
+		color: #cccccc;
+	}
+	
+	#granular-top-bar {
+		background-color: #4a4f54;
+		color: #ffffff;
+	}
+	
+	#granular-top-bar .exit-to-dashboard {
+		background-color: #1f1f26;
+		color: #ffffff;
+	}
+	
+	#granular-top-bar .view-live-page {
+		background-color: #1f1f26;
+		color: #ffffff;
+	}
+	
+	.eicon-edd-single:before,
+	.eicon-designer-edd:before,
+	.eicon-designer-scroll:before,
+	.eicon-designer-frameit:before,
+	.eicon-designer-preview:before,
+	.eicon-designer-designfolio:before {
+		color: #ffffff;
 	}

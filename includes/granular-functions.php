@@ -29,7 +29,7 @@ class Plugin_Functions {
 		$panel_id = granular_get_options( 'granular_welcome_template_id', 'granular_advanced_settings', '' ); ?>
 		<div class="granular-dashboard">
 			<?php do_action( 'granular_before_dashboard_title' ); ?>
-			<h2><?php _e( 'Dashboard', 'elementor-controls' ); ?></h2>
+			<h2><?php _e( 'Dashboard', 'granular-controls-for-elementor' ); ?></h2>
 			<div id="welcome-panel" class="welcome-panel">
 				<?php wp_nonce_field( 'welcome-panel-nonce', 'granularwelcomepanelnonce', false ); ?>
 				<?php do_action( 'granular_before_welcome_content' ); ?>
@@ -66,6 +66,18 @@ class Plugin_Functions {
 
 	}
 	
+	//public function enqueue_onion_skin_styles() {
+	//	$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+		
+	//	wp_enqueue_style(
+	//		'granular-onion-skin',
+	//		ELEMENTOR_CONTROLS_ASSETS_URL . 'css/granular-onion-skin.min.css',
+	//		[],
+	//		ELEMENTOR_CONTROLS_VERSION
+	//	);
+
+	//}
+	
 	public function enqueue_welcome_panel_styles() {
 		$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		$panel_id = granular_get_options( 'granular_welcome_template_id', 'granular_advanced_settings', '' );		
@@ -86,13 +98,18 @@ class Plugin_Functions {
 		
 		$skin = granular_get_options( 'granular_editor_skin', 'granular_editor_settings', 'default' );
 		if ( ! empty ( $skin ) ) {
-			add_action( 'elementor/editor/after_enqueue_styles', [ $this, 'enqueue_editor_skin_styles' ] );
+			add_action( 'elementor/editor/after_enqueue_styles', [ $this, 'enqueue_editor_skin_styles' ], 99 );
 		}
 		
 		$editor_hack_2 = granular_get_options( 'granular_editor_hack_2', 'granular_editor_settings', 'no' );
 		if ( 'yes' === $editor_hack_2 ) {
 			add_action( 'elementor/editor/after_enqueue_styles', [ $this, 'db_ui_hack_2' ] );
 		}
+		
+		//$onion_skin_on = granular_get_options( 'granular_onion_skin_on', 'granular_editor_settings', 'no' );
+		//if ( 'yes' === $onion_skin_on ) {
+		//	add_action( 'elementor/editor/after_enqueue_styles', [ $this, 'enqueue_onion_skin_styles' ], 100 );
+		//}
 		
 		/* 
 		 * Advanced Options
@@ -106,6 +123,5 @@ class Plugin_Functions {
 	
 	public function __construct() {
 		$this->functions_setup_hooks();
-		
 	}
 }

@@ -15,8 +15,10 @@ class Module extends Module_Base {
 
 	public function __construct() {
 		parent::__construct();
-
-		$this->add_actions();
+		$particles_on = granular_get_options( 'granular_editor_particles_on', 'granular_editor_settings', 'no' );
+		if ( 'yes' === $particles_on ) {
+			$this->add_actions();
+		}
 	}
 
 	public function get_name() {
@@ -40,37 +42,37 @@ class Module extends Module_Base {
 		$element->add_control(
 			'section_particles_on',
 			[
-				'label' => __( 'Enable Particles', 'extend-elements' ),
+				'label' => __( 'Enable Particles', 'granular-controls-for-elementor' ),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => '',
 				'label_on' => 'Yes',
 				'label_off' => 'No',
 				'return_value' => 'yes',
-				'description' => __( 'Switch on to enable & access Particles options! Note that currently particles are not visible in edit/preview mode & can only be viewed on the frontend.', 'extend-elements' ),
+				'description' => __( 'Switch on to enable & access Particles options! Note that currently particles are not visible in edit/preview mode & can only be viewed on the frontend.', 'granular-controls-for-elementor' ),
 			]
 		);
 		
 		$element->add_responsive_control(
 			'particles_custom_height',
 			[
-				'label' => __( 'Height', 'elementor' ),
+				'label' => __( 'Height', 'granular-controls-for-elementor' ),
 				'type' => Controls_Manager::NUMBER,
 				'condition' => [
 					'section_particles_on' => 'yes',
 				],
-				'description' => __( 'Set this equal to the set Minimum Height of your section - default is 400px!', '' ),
+				'description' => __( 'Set this equal to the set Minimum Height of your section - default is 400px!', 'granular-controls-for-elementor' ),
 			]
 		);
 		
 		$element->add_control(
 			'section_particles_js',
 			[
-				'label' => __( 'Particles JSON', 'extend-elements' ),
+				'label' => __( 'Particles JSON', 'granular-controls-for-elementor' ),
 				'type' => Controls_Manager::TEXTAREA,
 				'condition' => [
 					'section_particles_on' => 'yes',
 				],
-				'description' => __( 'Paste your particles JSON code here - Generate it from <a href="http://vincentgarreau.com/particles.js/#default" target="_blank">Here!</a>', 'extend-elements' ),
+				'description' => __( 'Paste your particles JSON code here - Generate it from <a href="http://vincentgarreau.com/particles.js/#default" target="_blank">Here!</a>', 'granular-controls-for-elementor' ),
 				'default' => '',
 			]
 		);
@@ -88,12 +90,14 @@ class Module extends Module_Base {
 	
 	public function before_render($element) {    		
 		$settings = $element->get_settings();
-		if ( empty( $settings['particles_custom_height'] ) ) {
-			$height = '400';
-		} else {
-			$height = $settings['particles_custom_height'];
-		}		
-		if( $element->get_settings( 'section_particles_on' ) == 'yes' ) {			
+		if( $element->get_settings( 'section_particles_on' ) == 'yes' ) {
+			
+			if ( empty( $settings['particles_custom_height'] ) ) {
+				$height = '400';
+			} else {
+				$height = $settings['particles_custom_height'];
+			}		
+
 			$element->add_render_attribute( '_wrapper', 'id', 'granule-particles-' . $element->get_id() ); ?>				
 			<style>#granule-particles-<?php echo $element->get_id(); ?> > canvas{height: <?php echo $height ?>px !important;position: absolute;top:0;}</style>
 			<?php	
