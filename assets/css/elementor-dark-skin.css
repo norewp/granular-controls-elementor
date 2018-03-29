@@ -62,7 +62,8 @@
 	.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab a {
 		color: #c8c8c8;
 	}
-	.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.active {
+	.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.active,
+	.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.elementor-active {
 		background-image: -webkit-gradient(linear,left top,left bottom,from(#ffffff1a),to(#ffffff1a));
 		background-image: -webkit-linear-gradient(top,#ffffff1a,#ffffff1a);
 		background-image: -o-linear-gradient(top,#ffffff1a,#ffffff1a);
@@ -275,6 +276,14 @@
 	.elementor-panel .select2-container:not(.select2-container--open):not(.select2-container--focus) .select2-selection--multiple, 
 	.elementor-panel .select2-container:not(.select2-container--open):not(.select2-container--focus) .select2-selection--single {
 		border-color: #565656;
+	}
+	
+	/* v2 related Styles */
+	#elementor-theme-builder-conditions__publish {
+		background-color: #a4afb7;
+	}
+	#elementor-theme-builder-conditions__publish:hover {
+		background-color: #1f1f26;
 	}
 	/* Granular Controls additions */
 	.elementor-panel .panel-elements-category-title {	

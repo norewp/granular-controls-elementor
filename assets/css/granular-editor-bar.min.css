@@ -1,8 +1,9 @@
 #granular-top-bar {
 	background-color: #b7084e;
 	max-width: 600px;
+	min-width: 130px;
 	width: auto;
-	height: 40px;
+	height: 40px !important;
 	color: #ffffff;
 	position: -webkit-sticky;
 	position: sticky;
@@ -44,19 +45,26 @@ body.elementor-editor-preview #granular-top-bar {
 #granular-top-bar .exit-to-dashboard {
 	background-color: #aa0346;
 	color: #ffffff;
+}/*
+#granular-top-bar .exit-to-dashboard .granular-exit-point {
+	margin-left: 8px;
 }
+/*
 #granular-top-bar .exit-to-dashboard i {
     margin-right: 8px;
-}
+}*/
 
 #granular-top-bar .view-live-page {
 	background-color: #aa0346;
 	color: #ffffff;
+}/*
+#granular-top-bar .view-live-page .granular-live-view {
+	margin-right: 8px;
 }
-
+/*
 #granular-top-bar .view-live-page i {
     margin-left: 8px;
-}
+}*/
 .elementor-panel .panel-elements-category-title {	
 	margin: 5px 10px;
 	padding: 15px 15px !important;

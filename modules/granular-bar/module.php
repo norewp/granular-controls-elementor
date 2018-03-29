@@ -52,7 +52,8 @@ class Module extends Module_Base {
 		global $post;
 		$exit_strategy 	= granular_get_options( 'granular_editor_exit_point', 'granular_editor_settings', 'editor' );
 		$exit_target 	= granular_get_options( 'granular_editor_exit_target', 'granular_editor_settings', 'editor' );
-		$exit_name 		= granular_get_options( 'granular_editor_exit_name', 'granular_editor_settings', __( 'Exit To Dashboard', 'granular-controls-for-elementor' ) );
+		$exit_name 		= granular_get_options( 'granular_editor_exit_name', 'granular_editor_settings', '' );
+		$live_name 		= granular_get_options( 'granular_editor_live_view_name', 'granular_editor_settings', '' );
 		$id 			= $post->ID;
 		$live_view 		= esc_url( get_permalink( $id ) );
 		if ( 'dashboard' === $exit_strategy ) {
@@ -65,6 +66,8 @@ class Module extends Module_Base {
 			$exit_point	= esc_url( admin_url( 'edit.php' ) );
 		} elseif ( 'type_lib' === $exit_strategy ) {
 			$exit_point	= esc_url( admin_url( 'edit.php?post_type=elementor_library' ) );
+		} elseif ( 'live' === $exit_strategy ) {
+			$exit_point	= esc_url( home_url( '/' ) );
 		}
 		
 	?>
@@ -75,12 +78,16 @@ class Module extends Module_Base {
 			<a href="<?php echo $exit_point; ?>" target="<?php echo $exit_target; ?>" rel="noopener noreferrer">
 				<div class="exit-to-dashboard">
 					<i class="elementor-icon eicon-wordpress"></i>
-					<?php echo esc_html( $exit_name ); ?>
+					<span class="granular-exit-point">
+						<?php echo esc_html( $exit_name ); ?>
+					</span>
 				</div>
 			</a>
 			<a href="<?php echo $live_view; ?>" target="_blank" rel="noopener noreferrer">
 				<div class="view-live-page">
-					<?php _e( 'View Live Page', 'granular-controls-for-elementor' ); ?>
+					<span class="granular-live-view">
+						<?php echo esc_html( $live_name ); ?>
+					</span>
 					<i class="elementor-icon eicon-editor-external-link"></i>
 				</div>
 			</a>

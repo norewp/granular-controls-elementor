@@ -2,9 +2,9 @@
 Contributors: norewp, diggeddy, Alex Ischenko
 Donate link: https://www.paypal.me/NoreMarketing/5
 Tags: Elementor, Custom Controls, Accordion off, Delayed content, Editor Skins, UI Hacks, Elementor Parallax, Elementor Particles
-Requires at least: 4.4
+Requires at least: 4.6
 Tested up to: 4.9.4
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,15 @@ You can enable or disable the bar via the settings page - Visit Elementor > Gran
 As the admin page is being modified this may happen on some sites but the widgets are not lost - simply click on the screen options and turn them on again.
 
 == Changelog ==
+
+= 1.0.5 =     
+* NEW: Added option to set custom text for the live view button.    
+* NEW: Added option to exit to main site for the Exit Strategy button.   
+* TWEAK: Both text fields for the Exit & Live view fields can be left empty to only show the Icons.    
+* TWEAK: CSS adjustments to accommodate the above changes.   
+* TWEAK: Adjusted color contrast on the Typography popover to make texts more legible.    
+* TWEAK: Adjusted Publish button color for the new Conditional Popup introduced in Elementor v2.    
+* TWEAKS: Minor code and CSS tweaks for better visibility on certain elements.     
 
 = 1.0.4 =
 * TWEAK: Changed plugin textdoman to match the plugin slug in order to resolve the WordPress/GlotPress translation issue.    

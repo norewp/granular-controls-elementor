@@ -3,7 +3,7 @@
  * Plugin Name: Granular Controls Elementor
  * Description: Take control of your favourite page builder's elements to design better websites and landing pages and overall better UI/UX.
  * Plugin URI: https://github.com/norewp/granular-controls-elementor
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Zulfikar Nore
  * Author URI: https://granularcontrols.com/
  * Text Domain: granular-controls-for-elementor
@@ -11,8 +11,8 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-define( 'ELEMENTOR_CONTROLS_VERSION', '1.0.4' );
-define( 'ELEMENTOR_CONTROLS_PREVIOUS_STABLE_VERSION', '1.0.2' );
+define( 'ELEMENTOR_CONTROLS_VERSION', '1.0.5' );
+define( 'ELEMENTOR_CONTROLS_PREVIOUS_STABLE_VERSION', '1.0.4' );
 
 define( 'ELEMENTOR_CONTROLS__FILE__', __FILE__ );
 define( 'ELEMENTOR_CONTROLS_PLUGIN_BASE', plugin_basename( ELEMENTOR_CONTROLS__FILE__ ) );
@@ -172,4 +172,3 @@ if ( 'yes' === $elementor_dash_on ) {
 	remove_action( 'welcome_panel', 'wp_welcome_panel' );
 	add_action( 'admin_enqueue_scripts', 'elementor_dashboard_enqueue' );
 }
-

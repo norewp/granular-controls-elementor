@@ -73,7 +73,7 @@ class Module extends Module_Base {
 			[
 				'label' => __( 'Start Date', 'granular-controls-for-elementor' ),
 				'type' => Controls_Manager::DATE_TIME,
-				'default' => '01/01/2018 00:00:00',
+				'default' => $this->current_date_time(),
 				'condition' => [
 					'scheduled_content_on' => 'yes',
 				],
@@ -86,7 +86,7 @@ class Module extends Module_Base {
 			[
 				'label' => __( 'End Date', 'granular-controls-for-elementor' ),
 				'type' => Controls_Manager::DATE_TIME,
-				'default' => '02/01/2018 00:00:00',
+				'default' => '01/01/2019 00:00:00',
 				'condition' => [
 					'scheduled_content_on' => 'yes',
 				],
@@ -114,7 +114,8 @@ class Module extends Module_Base {
 				(function($) {
 					$.fn.scheduleContent = function(options) {
 						var settings = $.extend({
-							start: '01/01/2018 00:00:00',
+							//start: '01/01/2018 00:00:00',
+							start: '<?php echo $this->current_date_time(); ?>',
 							end: '12/31/2999 00:00:00'
 						}, options );
 						var startDate = new Date(settings.start);
@@ -136,6 +137,10 @@ class Module extends Module_Base {
 		<?php	
 		}
 		
+	}
+	
+	public function current_date_time() {
+		$date = date('Y/m/d H:i:s');
 	}
 	
 	protected function add_actions() {

@@ -2,7 +2,7 @@
 .elementor-panel#elementor-panel,
 .elementor-panel .elementor-control { 
 	background: #9e078c;
-	color: #f4f4f4;
+	color:  #f4f4f4;
 	
 }
 
@@ -63,7 +63,8 @@
 .elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab a {
 	color: #c8c8c8;;
 }
-.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.active {
+.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.active,
+.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.elementor-active {
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#ffffff1a),to(#ffffff1a));
 	background-image: -webkit-linear-gradient(top,#ffffff1a,#ffffff1a);
 	background-image: -o-linear-gradient(top,#ffffff1a,#ffffff1a);
@@ -236,17 +237,17 @@ input[disabled] {
 .elementor-panel #elementor-panel-saver-save-options {
     border-left-color: #890077;
 }
+.elementor-panel .elementor-controls-popover {
+	background-color: #890077;
+}
 
-/* CUSTOM STYLES EDITOR */
-/*
-.ace-tm {
-	background-color: #0000001a;
+/* v2 Related Styles */
+#elementor-theme-builder-conditions__publish {
+	background-color: #a4afb7;
 }
-.ace-tm .ace_gutter {
-	background: #5f5f5f33;
-	color: #ccc;
+#elementor-theme-builder-conditions__publish:hover {
+	background-color: #1f1f26;
 }
-*/
 
 .elementor-panel .panel-elements-category-title {	
 	background-color: rgba(137,0,119,0.07);

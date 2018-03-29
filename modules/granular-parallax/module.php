@@ -179,7 +179,7 @@ class Module extends Module_Base {
 					"use strict";
 					var granularParallaxElementorFront = {
 						init: function() {
-							elementorFrontend.hooks.addAction( 'frontend/element_ready/global', granularParallaxElementorFront.initWidget );
+							elementorFrontend.hooks.addAction('frontend/element_ready/global', granularParallaxElementorFront.initWidget);
 						},
 						initWidget: function( $scope ) {
 							$('.elementor-element-<?php echo $element->get_id(); ?>').jarallax({
@@ -193,7 +193,7 @@ class Module extends Module_Base {
 							});
 						}
 					};
-					$( window ).on( 'elementor/frontend/init', granularParallaxElementorFront.init );
+					$(window).on('elementor/frontend/init', granularParallaxElementorFront.init);
 				}( jQuery ) );
 			</script>
 			

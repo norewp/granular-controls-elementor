@@ -2,10 +2,8 @@
 .elementor-panel#elementor-panel,
 .elementor-panel .elementor-control { 
 	background: #0175af;
-	color: #f4f4f4;
-	
+	color: #f4f4f4;	
 }
-
 /* MAIN ELEMENT */
 .elementor-panel .elementor-element {
 	background-color: rgba(0,0,0,0.1);
@@ -61,9 +59,11 @@
 	background-color: #08567c;
 }
 .elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab a {
-	color: #c8c8c8;;
+	color: #c8c8c8;
 }
-.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.active {
+
+.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.active,
+.elementor-panel .elementor-panel-navigation .elementor-panel-navigation-tab.elementor-active {
 	background-image: -webkit-gradient(linear,left top,left bottom,from(#ffffff1a),to(#ffffff1a));
 	background-image: -webkit-linear-gradient(top,#ffffff1a,#ffffff1a);
 	background-image: -o-linear-gradient(top,#ffffff1a,#ffffff1a);
@@ -208,9 +208,8 @@ input[disabled] {
 .elementor-panel select:focus,
 .elementor-panel textarea:focus,
 .elementor-panel input:focus {
-	 border-color: #666;
+	border-color: #666;
 }
-
 
 /* SETTINGS MENU */
 .elementor-panel .elementor-panel-menu-item:not(:hover),
@@ -237,16 +236,17 @@ input[disabled] {
     border-left-color: #08567c;
 }
 
-/* CUSTOM STYLES EDITOR */
-/*
-.ace-tm {
-	background-color: #0000001a;
+.elementor-panel .elementor-controls-popover {
+	background-color: #08567c;
 }
-.ace-tm .ace_gutter {
-	background: #5f5f5f33;
-	color: #ccc;
+
+/* v2 Related Styles */
+#elementor-theme-builder-conditions__publish {
+	background-color: #a4afb7;
 }
-*/
+#elementor-theme-builder-conditions__publish:hover {
+	background-color: #1f1f26;
+}
 
 /* Granular Controls additions */
 .elementor-panel .panel-elements-category-title {	

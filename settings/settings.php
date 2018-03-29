@@ -180,7 +180,8 @@ if ( !class_exists('Granular_Controls_Settings_API' ) ) {
 							'type_pages'	=> __( 'Pages List', 'granular-controls-for-elementor' ),
 							'type_posts'	=> __( 'Posts List', 'granular-controls-for-elementor' ),
 							'type_lib'		=> __( 'Library List', 'granular-controls-for-elementor' ),
-							'dashboard' 	=> __( 'Admin Dashboard', 'granular-controls-for-elementor' )
+							'dashboard' 	=> __( 'Admin Dashboard', 'granular-controls-for-elementor' ),
+							'live' 			=> __( 'Site\'s Home Page', 'granular-controls-for-elementor' )
 						),
 					),
 					array(
@@ -199,7 +200,14 @@ if ( !class_exists('Granular_Controls_Settings_API' ) ) {
 						'label'   => __( 'Exit Name', 'granular-controls-for-elementor' ),
 						'desc'    => __( 'If you\'ve changed the default exit point it might be worth changing the button text too so that you know where you\'ll land on exit :) ', 'granular-controls-for-elementor' ),
 						'type'    => 'text',
-						'default' => 'Exit To Dashboard',
+						'default' => __( 'Exit To Dashboard', 'granular-controls-for-elementor' ),
+					),
+					array(
+						'name'    => 'granular_editor_live_view_name',
+						'label'   => __( 'Live View Name', 'granular-controls-for-elementor' ),
+						'desc'    => __( 'Change the Live View text or leave empty to only show the icon :) ', 'granular-controls-for-elementor' ),
+						'type'    => 'text',
+						'default' => __( 'View Live Page', 'granular-controls-for-elementor' ),
 					),
 				),
 				'granular_advanced_settings' => array(
